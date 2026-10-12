@@ -18,6 +18,9 @@
 [ext_resource type="Theme" uid="uid://bda6jdmo18uon" path="res://main_theme.tres" id="13_icoan"]
 [ext_resource type="Script" uid="uid://jrw2xo7ntbb8" path="res://scenes/ui/red_flash.gd" id="15_t1kk3"]
 [ext_resource type="PackedScene" uid="uid://bqihylsgoeikp" path="res://scenes/ui/battle_over_panel.tscn" id="17_6ofp8"]
+[ext_resource type="PackedScene" uid="uid://bi6dqc7f1m32b" path="res://scenes/ui/card_pile_opener.tscn" id="17_w40i5"]
+[ext_resource type="Texture2D" uid="uid://cabn08kg4vfv1" path="res://art/discard.png" id="18_sgdsx"]
+[ext_resource type="PackedScene" uid="uid://cbaivltxjm25" path="res://scenes/ui/card_pile_view.tscn" id="21_5moxy"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rcfeb"]
 size = Vector2(256, 100)
@@ -46,15 +49,15 @@ debug_color = Color(0, 0.6, 0.69803923, 0.12941177)
 script = ExtResource("4_kd6yx")
 
 [node name="BatEnemy1" parent="EnemyHandler" unique_id=1656147042 instance=ExtResource("2_agsc7")]
-position = Vector2(170, 55)
+position = Vector2(166, 68)
 stats = ExtResource("8_mvulk")
 
 [node name="CrabEnemy" parent="EnemyHandler" unique_id=127105094 instance=ExtResource("2_agsc7")]
-position = Vector2(207, 81)
+position = Vector2(213, 79)
 stats = ExtResource("5_icoan")
 
 [node name="BatEnemy2" parent="EnemyHandler" unique_id=753246862 instance=ExtResource("2_agsc7")]
-position = Vector2(223, 32)
+position = Vector2(207, 32)
 stats = ExtResource("8_mvulk")
 
 [node name="Player" parent="." unique_id=2066708741 instance=ExtResource("3_py4tk")]
@@ -85,6 +88,8 @@ alignment = 1
 script = ExtResource("2_xd4uy")
 
 [node name="ManaUI" parent="BattleUI" unique_id=145113026 instance=ExtResource("11_fisqk")]
+offset_top = -43.0
+offset_bottom = -25.0
 char_stats = ExtResource("4_agsc7")
 
 [node name="Tooltip" parent="BattleUI" unique_id=452200487 instance=ExtResource("12_mxe8n")]
@@ -99,13 +104,59 @@ anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = -52.0
-offset_top = -21.0
+offset_top = -40.0
 offset_right = -7.0
-offset_bottom = -7.0
+offset_bottom = -26.0
 grow_horizontal = 0
 grow_vertical = 0
 theme = ExtResource("13_icoan")
 text = "End Turn"
+
+[node name="DrawPileButton" parent="BattleUI" unique_id=196605590 node_paths=PackedStringArray("counter") instance=ExtResource("17_w40i5")]
+unique_name_in_owner = true
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 8.0
+offset_top = -21.0
+offset_right = 24.0
+offset_bottom = -5.0
+grow_vertical = 0
+counter = NodePath("Counter")
+
+[node name="Counter" type="Label" parent="BattleUI/DrawPileButton" unique_id=58339949]
+layout_mode = 0
+offset_left = 11.0
+offset_top = 12.0
+offset_right = 21.0
+offset_bottom = 18.0
+text = "9"
+horizontal_alignment = 1
+
+[node name="DiscardPileButton" parent="BattleUI" unique_id=1552535979 node_paths=PackedStringArray("counter") instance=ExtResource("17_w40i5")]
+unique_name_in_owner = true
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -24.0
+offset_top = -21.0
+offset_right = -8.0
+offset_bottom = -5.0
+grow_horizontal = 0
+grow_vertical = 0
+texture_normal = ExtResource("18_sgdsx")
+counter = NodePath("Counter")
+
+[node name="Counter" type="Label" parent="BattleUI/DiscardPileButton" unique_id=307623301]
+layout_mode = 0
+offset_left = -3.0
+offset_top = 12.0
+offset_right = 7.0
+offset_bottom = 18.0
+text = "9"
+horizontal_alignment = 1
 
 [node name="RedFlash" type="CanvasLayer" parent="." unique_id=1320664035]
 layer = 2
@@ -128,4 +179,15 @@ one_shot = true
 layer = 2
 
 [node name="BattleOverPanel" parent="BattleOverLayer" unique_id=92082088 instance=ExtResource("17_6ofp8")]
+visible = false
+
+[node name="CardPileViews" type="CanvasLayer" parent="." unique_id=2097560671]
+layer = 4
+
+[node name="DrawPileView" parent="CardPileViews" unique_id=1212748532 instance=ExtResource("21_5moxy")]
+unique_name_in_owner = true
+visible = false
+
+[node name="DiscardPileView" parent="CardPileViews" unique_id=1591519884 instance=ExtResource("21_5moxy")]
+unique_name_in_owner = true
 visible = false

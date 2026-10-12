@@ -1,0 +1,58 @@
+[gd_scene format=3 uid="uid://dwr03g8p8xv0m"]
+
+[ext_resource type="PackedScene" uid="uid://dimrl335va55j" path="res://scenes/ui/card_menu_ui.tscn" id="1_ckt8b"]
+[ext_resource type="Script" uid="uid://bbh16ebh3h1uy" path="res://scenes/ui/card_tooltip_popup.gd" id="1_xpdyn"]
+
+[node name="CardTooltipPopup" type="Control" unique_id=2115677599]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_xpdyn")
+
+[node name="Background" type="ColorRect" parent="." unique_id=1619010789]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 0.78431374)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=2026133108]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -75.0
+offset_top = -26.0
+offset_right = 75.0
+offset_bottom = 26.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TooltipCard" type="CenterContainer" parent="VBoxContainer" unique_id=49665209]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="CardMenuUI" parent="VBoxContainer/TooltipCard" unique_id=87578624 instance=ExtResource("1_ckt8b")]
+layout_mode = 2
+
+[node name="CardDescription" type="RichTextLabel" parent="VBoxContainer" unique_id=617588310]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+mouse_filter = 2
+bbcode_enabled = true
+text = "Card Description Card Description Card Description 
+Card Description"
+fit_content = true
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="gui_input" from="." to="." method="_on_gui_input"]

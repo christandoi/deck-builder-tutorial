@@ -26,6 +26,10 @@ Shaker="*uid://d17os2kv5da5d"
 MusicPlayer="*uid://b7lkccb34g3io"
 SFXPlayer="*uid://dx1bf6goetnta"
 
+[debug]
+
+gdscript/warnings/unused_signal=0
+
 [display]
 
 window/size/viewport_width=256
