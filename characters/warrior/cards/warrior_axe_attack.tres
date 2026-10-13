@@ -6,7 +6,7 @@
 
 [resource]
 script = ExtResource("2_ungqh")
-id = "warrior_axe_Attack"
+id = "warrior_axe_attack"
 target = 1
 cost = 1
 icon = ExtResource("1_ungqh")
