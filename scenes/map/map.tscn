@@ -1,50 +1,40 @@
 [gd_scene format=3 uid="uid://0j5stj102r4k"]
 
 [ext_resource type="Script" uid="uid://dx0wb7lj5id6o" path="res://scenes/map/map.gd" id="1_sxf4j"]
+[ext_resource type="Script" uid="uid://dfk1lr04fd7e0" path="res://scenes/map/map_generator.gd" id="2_tqkkf"]
 
-[node name="Map" type="Control" unique_id=1908353734]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
+[sub_resource type="Gradient" id="Gradient_tqkkf"]
+colors = PackedColorArray(0.21568628, 0.21568628, 0.21568628, 1, 0.4, 0.21960784, 0.20392157, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_rcfeb"]
+gradient = SubResource("Gradient_tqkkf")
+width = 50
+
+[node name="Map" type="Node2D" unique_id=1729172556]
 script = ExtResource("1_sxf4j")
 
-[node name="ColorRect" type="ColorRect" parent="." unique_id=461260482]
-layout_mode = 1
+[node name="Visuals" type="Node2D" parent="." unique_id=1308078118]
+
+[node name="Lines" type="Node2D" parent="Visuals" unique_id=1978190734]
+unique_name_in_owner = true
+
+[node name="Rooms" type="Node2D" parent="Visuals" unique_id=79181158]
+unique_name_in_owner = true
+position = Vector2(0, -1)
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=551817495]
+offset = Vector2(128, 72)
+
+[node name="MapGenerator" type="Node" parent="." unique_id=372382808]
+script = ExtResource("2_tqkkf")
+
+[node name="MapBackground" type="CanvasLayer" parent="." unique_id=275290787]
+layer = -1
+
+[node name="Background" type="TextureRect" parent="MapBackground" unique_id=699326300]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-mouse_filter = 2
-color = Color(0, 0, 0, 0.58431375)
-
-[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=758160151]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -20.0
-offset_right = 20.0
-offset_bottom = 20.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="Label" type="Label" parent="VBoxContainer" unique_id=1497563548]
-layout_mode = 2
-text = "Map"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Button" type="Button" parent="VBoxContainer" unique_id=1791609559]
-custom_minimum_size = Vector2(0, 14)
-layout_mode = 2
-text = "Go Back"
-
-[connection signal="pressed" from="VBoxContainer/Button" to="." method="_on_button_pressed"]
+texture = SubResource("GradientTexture1D_rcfeb")
