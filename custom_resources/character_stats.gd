@@ -31,7 +31,7 @@ func take_damage(damage : int) -> void:
 
 
 func reset_mana() -> void:
-	self.mana = max_mana
+	mana = max_mana
 
 
 func can_play_card(card: Card) -> bool:
