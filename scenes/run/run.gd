@@ -8,9 +8,10 @@ const SHOP_SCENE := preload("res://scenes/shop/shop.tscn")
 const TREASURE_SCENE := preload("res://scenes/treasure/treasure.tscn")
 
 @export var run_startup: RunStartup
-@onready var map: Map = $Map
 
+@onready var map: Map = $Map
 @onready var current_view: Node = $CurrentView
+@onready var health_ui: HealthUI = %HealthUI
 @onready var gold_ui: GoldUI = %GoldUI
 @onready var deck_button: CardPileOpener = %DeckButton
 @onready var deck_view: CardPileView = %DeckView
@@ -84,6 +85,8 @@ func _setup_event_connections() -> void:
 
 
 func _setup_top_bar():
+	character.stats_changed.connect(health_ui.update_stats.bind(character))
+	health_ui.update_stats(character)
 	gold_ui.run_stats = stats
 	deck_button.card_pile = character.deck
 	deck_view.card_pile = character.deck
@@ -95,6 +98,11 @@ func _on_battle_room_entered(room: Room) -> void:
 	battle_scene.char_stats = character
 	battle_scene.battle_stats = room.battle_stats
 	battle_scene.start_battle()
+	
+	
+func _on_campfire_entered() -> void:
+	var campfire := _change_view(CAMPFIRE_SCENE) as Campfire
+	campfire.char_stats = character
 
 
 func _on_battle_won() -> void:
@@ -113,7 +121,7 @@ func _on_map_exited(room: Room) -> void:
 		Room.Type.TREASURE:
 			_change_view(TREASURE_SCENE)
 		Room.Type.CAMPFIRE:
-			_change_view(CAMPFIRE_SCENE)
+			_on_campfire_entered()
 		Room.Type.SHOP:
 			_change_view(SHOP_SCENE)
 		Room.Type.BOSS:

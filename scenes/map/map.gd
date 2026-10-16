@@ -22,11 +22,14 @@ func _ready() -> void:
 	
 
 func _input(event: InputEvent) -> void:
+	if not visible: # bug fix: map scrolls in background during other scenes
+		return
+		
 	if event.is_action_pressed("scroll_up"):
 		camera_2d.position.y -= SCROLL_SPEED
 	if event.is_action_pressed("scroll_down"):
 		camera_2d.position.y += SCROLL_SPEED
-	
+
 	camera_2d.position.y = clamp(camera_2d.position.y, -camera_edge_y, 0)
 
 

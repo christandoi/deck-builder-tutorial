@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://dlbqs2udxr36i" path="res://scenes/ui/gold_ui.tscn" id="4_0tt4g"]
 [ext_resource type="PackedScene" uid="uid://bi6dqc7f1m32b" path="res://scenes/ui/card_pile_opener.tscn" id="4_gqbdr"]
 [ext_resource type="Texture2D" uid="uid://bgj1tm1fkgfwi" path="res://art/deck.png" id="5_5o40y"]
+[ext_resource type="PackedScene" uid="uid://bem4pgiidl8ue" path="res://scenes/ui/health_ui.tscn" id="5_wo0nw"]
 [ext_resource type="PackedScene" uid="uid://cbaivltxjm25" path="res://scenes/ui/card_pile_view.tscn" id="6_5o40y"]
 
 [node name="Run" type="Node" unique_id=1256184022]
@@ -68,6 +69,11 @@ custom_minimum_size = Vector2(0, 18)
 anchors_preset = 10
 anchor_right = 1.0
 grow_horizontal = 2
+
+[node name="HealthUI" parent="TopBar/BarItems" unique_id=682646889 instance=ExtResource("5_wo0nw")]
+unique_name_in_owner = true
+layout_mode = 2
+show_max_hp = true
 
 [node name="GoldUI" parent="TopBar/BarItems" unique_id=456626958 instance=ExtResource("4_0tt4g")]
 unique_name_in_owner = true
