@@ -10,9 +10,15 @@ const WHITE_SPRITE_MATERIAL := preload("uid://d30aqi80c1nrc")
 @onready var arrow: Sprite2D = $Arrow
 @onready var stats_ui: StatsUI = $StatsUI
 @onready var intent_ui: IntentUI = $IntentUI
+@onready var status_handler: StatusHandler = $StatusHandler
 
 var enemy_action_picker: EnemyActionPicker
 var current_action: EnemyAction : set = set_current_action
+
+
+## bug in godot 4.2.1? not happening in 4.7.2
+#func _ready() -> void:
+	#status_handler.status_owner = self
 
 
 func set_current_action(value: EnemyAction) -> void:
@@ -93,8 +99,9 @@ func take_damage(damage: int) -> void:
 	tween.finished.connect(
 		func():
 			sprite_2d.material = null
-
+ 
 			if stats.health <= 0:
+				Events.enemy_died.emit(self)
 				queue_free()
 	)
 	

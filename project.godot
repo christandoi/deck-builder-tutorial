@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Deck Builder Tutorial"
-run/main_scene="uid://dx3dyq715k4o3"
+run/main_scene="uid://c0pct0tbq7eqw"
 config/features=PackedStringArray("4.7", "Mobile")
 config/icon="uid://b80t1pkjhxn6s"
 

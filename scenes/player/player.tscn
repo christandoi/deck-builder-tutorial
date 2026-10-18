@@ -3,6 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://cpydvk8mq66o5" path="res://art/tile_0087.png" id="1_dovo2"]
 [ext_resource type="Script" uid="uid://u7flmwmkrs3u" path="res://scenes/player/player.gd" id="1_gmlin"]
 [ext_resource type="PackedScene" uid="uid://bp3poj6duoc0p" path="res://scenes/ui/stats_ui.tscn" id="2_gmlin"]
+[ext_resource type="PackedScene" uid="uid://cpqw6mgr6e0be" path="res://scenes/status_handler/status_handler.tscn" id="4_lvxji"]
 
 [node name="Player" type="Node2D" unique_id=2066708741 groups=["player"]]
 script = ExtResource("1_gmlin")
@@ -13,3 +14,10 @@ texture = ExtResource("1_dovo2")
 [node name="StatsUI" parent="." unique_id=794471586 instance=ExtResource("2_gmlin")]
 offset_top = 6.0
 offset_bottom = 22.0
+
+[node name="StatusHandler" parent="." unique_id=1598049538 node_paths=PackedStringArray("status_owner") instance=ExtResource("4_lvxji")]
+offset_left = -27.0
+offset_top = 23.0
+offset_right = -27.0
+offset_bottom = 23.0
+status_owner = NodePath("..")

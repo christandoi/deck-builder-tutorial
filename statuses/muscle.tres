@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="Muscle" format=3 uid="uid://bjknrnr3agfbu"]
+
+[ext_resource type="Texture2D" uid="uid://dw3xe7exuairf" path="res://art/muscle.png" id="1_odh2a"]
+[ext_resource type="Script" uid="uid://cfm2aod5tclip" path="res://statuses/muscle.gd" id="2_odh2a"]
+
+[resource]
+script = ExtResource("2_odh2a")
+id = "muscle"
+type = 2
+stack_type = 1
+stacks = 2
+icon = ExtResource("1_odh2a")
+tooltip = "TODO"
+metadata/_custom_type_script = "uid://cktj5oj5abg0w"
